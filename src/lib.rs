@@ -119,8 +119,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let mut client = ArpClient::build_with_description("Intel(R) Wireless-AC 9560 160MHz").unwrap();
-        let mac = client.get_mac(Ipv4Addr::new(192, 168, 2, 105)).unwrap();
+        std::env::set_var("LIB", "./");
+        let mut client = ArpClient::build_with_description("Killer E2400 Gigabit Ethernet Controller").unwrap();
+        let mac = client.get_mac(Ipv4Addr::new(10, 8, 10, 254)).unwrap();
         let mut str = format!("{:x?}", mac);
         str.make_ascii_uppercase();
         println!("{}", str)
